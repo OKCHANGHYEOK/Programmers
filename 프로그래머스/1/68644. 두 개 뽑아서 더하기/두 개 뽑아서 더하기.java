@@ -9,9 +9,12 @@ class Solution {
         HashSet<Integer> hs = new HashSet<>();
         
         for(int i = 0; i < numbers.length; i++) {
-        	for(int j = i + 1; j < numbers.length; j++) {
-        		int sum = numbers[i] + numbers[j];
-        		hs.add(sum);
+        	for(int j = 0; j < numbers.length; j++) {
+                if(i != j) {
+                    int sum = numbers[i] + numbers[j];
+        		    hs.add(sum); 
+                }
+
         	}
         }
         
