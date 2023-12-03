@@ -1,6 +1,6 @@
 # [level 1] 콜라 문제 - 132267 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132267?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/132267) 
 
 ### 성능 요약
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2023년 12월 0일 19:56:31
+2023년 12월 0일 19:57:11
 
 ### 문제 설명
 
