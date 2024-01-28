@@ -1,18 +1,22 @@
+import java.util.Stack;
+
 class Solution {
 	public int solution(String s) {
 		int answer = 0;
 
-		StringBuilder sb = new StringBuilder();
+		Stack<Character> st = new Stack<>();
+		char[] arr = s.toCharArray();
 		
-		for(int i = 0; i < s.length(); i++) {
-			sb.append(s.charAt(i));
-			if(sb.length() >= 2 && sb.charAt(sb.length() - 2) == sb.charAt(sb.length() - 1)) {
-				sb.delete(sb.length() - 2, sb.length());
+		for(int i = 0; i < arr.length; i++) {
+			if(st.size() >= 1 && arr[i] == st.lastElement()) {
+				st.pop();
+				continue;
 			}
+			st.add(arr[i]);
 		}
 		
-		if(sb.length() == 0) answer = 1;
-		
+		if(st.size() == 0) answer = 1; 
+
 		return answer;
 	}
 }
