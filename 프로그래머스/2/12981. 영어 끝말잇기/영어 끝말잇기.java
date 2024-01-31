@@ -30,8 +30,7 @@ class Solution {
         	answer[0] = 0;
         	answer[1] = 0;        	
         }
-        
-        System.out.println(list.toString());
+
         
         return answer;
     }
