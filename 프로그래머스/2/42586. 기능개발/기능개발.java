@@ -14,8 +14,8 @@ class Solution {
 		// 현재 진행중인 작업상황을 LinkedList 로 선언
         LinkedList<Integer> desk = new LinkedList<>(new ArrayList<>(list));
         
-		// 배포된 날짜를 저장할 리스트
-        ArrayList<Integer> dayList = new ArrayList<Integer>();
+		// 배포된 날짜를 저장할 배열
+        int[] dayList = new int[progresses.length];
         
 		// 현재 진행된 날짜수를 담당할 변수
         int day = 0;
@@ -33,7 +33,7 @@ class Solution {
 			day++; // 각 프로그램의 작업이 완료되었으므로 날짜수 1증가
 			while (desk.size() != 0 && desk.get(0) >= 100) { // 현재 맨 앞에 있는 작업부터 확인하면서 작업이 완료되었다면
 				desk.poll();       // 작업을 종료하고 작업 데스크에서 제거한다
-				dayList.add(day);  // 배포 리스트에 현재 날짜수를 추가한다
+				dayList[count] = day;  // 배포 리스트에 현재 날짜수를 추가한다
 				count++;
 			}
 		}
@@ -43,15 +43,9 @@ class Solution {
 		
         // dayList에 저장된 배포일을 기준으로 이전에 저장된 동일한 배포일의 key값이 없다면 key와 value를 새로 저장
         // 이전에 저장된 동일한 배포일의 key값이 있다면 해당 key의 value를 가져온 다음 1증가 시키고 해당 키에 다시 저장
-		for(int i = 0; i < dayList.size(); i++) {
-			if(!hm.keySet().contains(dayList.get(i))) {
-				hm.put(dayList.get(i), 1);
-			}
-			else {
-				int dist = hm.get(dayList.get(i));
-				dist++;
-				hm.put(dayList.get(i), dist);
-			}
+		for(int i = 0; i < dayList.length; i++) {
+			if(!hm.keySet().contains(dayList[i])) hm.put(dayList[i], 1);
+			else hm.put(dayList[i], hm.get(dayList[i]) + 1);
 		}
 		
 		answer = new int[hm.size()];
