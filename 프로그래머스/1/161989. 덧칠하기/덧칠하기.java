@@ -18,7 +18,8 @@ class Solution {
         	int index = list.indexOf(0);
         	try {        		
         		for(int i = index; i < index + m; i++) {
-        			list.set(i, 1);
+        			if(list.get(i) == 1) continue;
+                    list.set(i, 1);
         		}
         	} catch(IndexOutOfBoundsException e) {}
         	answer++;
