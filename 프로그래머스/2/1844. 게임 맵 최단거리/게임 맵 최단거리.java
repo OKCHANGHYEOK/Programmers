@@ -9,6 +9,10 @@ class Solution {
         int n = maps.length;
         int m = maps[0].length;
         boolean[][] visited = new boolean[n][m];
+
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+
         q.add(new int[]{0, 0, 1});
         while (!q.isEmpty()) {
             int[] cur = q.poll();
@@ -21,21 +25,13 @@ class Solution {
                 return answer;
             }
 
-            if (row + 1 < n && col < m && !visited[row + 1][col] && maps[row + 1][col] == 1) {
-                visited[row + 1][col] = true;
-                q.add(new int[]{row + 1, col, dir + 1});
-            }
-            if(row < n && col + 1 < m && !visited[row][col + 1] && maps[row][col + 1] == 1) {
-                visited[row][col + 1] = true;
-                q.add(new int[]{row, col + 1, dir + 1});
-            }
-            if(row < n && col - 1 >= 0 && !visited[row][col - 1] && maps[row][col - 1] == 1) {
-                visited[row][col - 1] = true;
-                q.add(new int[]{row, col - 1, dir + 1});
-            }
-            if(row - 1 >= 0 && col < m && !visited[row- 1][col] && maps[row - 1][col] == 1) {
-                visited[row - 1][col] = true;
-                q.add(new int[]{row - 1, col, dir + 1});
+            for(int i = 0; i < dx.length; i++) {
+                int nRow = row + dx[i];
+                int nCol = col + dy[i];
+                if(nRow >= 0 && nRow < n && nCol >= 0 && nCol < m && !visited[nRow][nCol] && maps[nRow][nCol] == 1) {
+                    visited[nRow][nCol] = true;
+                    q.add(new int[]{nRow, nCol, dir + 1});
+                }
             }
         }
 
