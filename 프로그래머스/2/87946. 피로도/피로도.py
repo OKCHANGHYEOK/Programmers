@@ -1,27 +1,17 @@
-from itertools import permutations
-
 def solution(k, dungeons):
-    explore_comb = list(permutations(dungeons))
-    arr_cnt = []    
+    arr_cnt = [0]
 
-    for comb in explore_comb:
-        fatigue = k
-        cnt = 0
+    visited = [False] * len(dungeons)
 
-        for dungeon in comb:
-            if explore_dungeon(fatigue, dungeon[0], dungeon[1]) != -1:
-                cnt += 1
-                fatigue -= dungeon[1]
+    explore(arr_cnt, k, dungeons, visited, 0)
 
-        arr_cnt.append(cnt)
+    return arr_cnt[0]
 
-        if max(arr_cnt) == len(dungeons):
-            break
+def explore(arr_cnt, k, dungeons, visited, count):
+    arr_cnt[0] = max(arr_cnt[0], count)
 
-    return max(arr_cnt)
-
-def explore_dungeon(remain_fatigue : int, min_fatigue : int, use_fatigue : int):
-    if remain_fatigue < min_fatigue:
-        return -1
-    
-    return remain_fatigue - use_fatigue
+    for i in range(0, len(dungeons)):
+        if not visited[i] and k >= dungeons[i][0]:
+            visited[i] = True
+            explore(arr_cnt, k - dungeons[i][1], dungeons, visited, count + 1)
+            visited[i] = False
