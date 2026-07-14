@@ -1,10 +1,10 @@
 # [level 1] 2016년 - 12901 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12901) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/12901?language=python3) 
 
 ### 성능 요약
 
-메모리: 74.8 MB, 시간: 0.06 ms
+메모리: 11.5 MB, 시간: 0.02 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 1월 1일 18:48:33
+2026년 07월 14일 13:53:09
 
 ### 문제 설명
 
